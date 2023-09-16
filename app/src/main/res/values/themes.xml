@@ -1,0 +1,33 @@
+<resources xmlns:tools="http://schemas.android.com/tools">
+    <!-- Base application theme. -->
+    <style name="Base.Theme.BeatBox" parent="Theme.Material3.DayNight.NoActionBar">
+        <!-- Customize your theme here -->
+        <item name="colorPrimary">@color/colorPrimary</item>
+        <item name="colorPrimaryDark">@color/colorPrimaryDark</item>
+        <item name="colorAccent">@color/colorAccent</item>
+
+        <!-- Customize the TabLayout -->
+        <item name="tabBackground">@color/colorPrimary</item>
+        <item name="tabIndicatorColor">@color/colorAccent</item>
+
+        <!-- Customize the Toolbar -->
+        <item name="toolbarStyle">@style/ToolbarStyle</item>
+    </style>
+
+    <style name="Theme.BeatBox" parent="Base.Theme.BeatBox" />
+
+    <style name="ToolbarStyle" parent="Widget.AppCompat.Toolbar">
+        <!-- Customize the Toolbar's appearance -->
+        <item name="android:background">@color/colorPrimary</item>
+        <item name="android:titleTextColor">@android:color/white</item>
+    </style>
+
+    <style name="CustomTabLayout" parent="Widget.Design.TabLayout">
+        <item name="tabIndicatorColor">#00000000</item> <!-- Transparent for selected tab -->
+        <item name="tabIndicatorHeight">3dp</item> <!-- Customize the height as needed -->
+        <item name="tabBackground">?attr/colorPrimary</item> <!-- Background color for unselected tabs -->
+        <item name="tabTextColor">@android:color/white</item> <!-- Tab text color -->
+        <item name="tabSelectedTextColor">@android:color/white</item> <!-- Selected tab text color -->
+    </style>
+
+</resources>
