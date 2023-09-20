@@ -77,12 +77,17 @@ class AudioScanner(private val contentResolver: ContentResolver) {
             }
         }
 
-        Log.d("MEDIA SCANNER", "Audio files founded: ${audioFileList.size}")
+        Log.d(TAG, "Audio files founded: ${audioFileList.size}")
 
         for (audio in audioFileList) {
-            Log.d("MEDIA SCANNER", "Audio name: " + audio.name)
+            Log.d(TAG, "Audio uri: ${audio.uri}")
+            Log.d(TAG, "Audio name: ${audio.name}")
+            Log.d(TAG, "Audio duration: ${audio.duration}")
+            Log.d(TAG, "Audio size: ${audio.size}")
         }
 
         return audioFileList
     }
 }
+
+private const val TAG = "AudioScanner"

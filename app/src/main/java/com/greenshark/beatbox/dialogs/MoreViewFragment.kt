@@ -9,6 +9,7 @@ import androidx.constraintlayout.widget.ConstraintLayout
 import com.google.android.material.bottomsheet.BottomSheetDialogFragment
 import com.greenshark.beatbox.R
 import com.greenshark.beatbox.models.AudioFile
+import com.greenshark.beatbox.utils.FavoritesManager
 
 /**
  * Created by Carlos Jiménez on 15-Sep-23.
@@ -28,7 +29,7 @@ class MoreViewFragment(private val audioFile: AudioFile) : BottomSheetDialogFrag
 
         val audioName: TextView = view.findViewById(R.id.audio_name)
         val addPlaylist: ConstraintLayout = view.findViewById(R.id.add_playlist)
-        val like: ConstraintLayout = view.findViewById(R.id.like)
+        val favorite: ConstraintLayout = view.findViewById(R.id.favorite)
 
         audioName.text = audioFile.name
 
@@ -36,7 +37,8 @@ class MoreViewFragment(private val audioFile: AudioFile) : BottomSheetDialogFrag
 
         }
 
-        like.setOnClickListener {
+        favorite.setOnClickListener {
+            val favoritesManager = FavoritesManager(requireContext())
 
         }
     }
