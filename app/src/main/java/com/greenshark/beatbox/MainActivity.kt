@@ -56,7 +56,8 @@ class MainActivity : AppCompatActivity() {
     }
 
     private fun checkReadMediaAudioPermission() {
-        val permissionToCheck = if (Build.VERSION.SDK_INT >= Build.VERSION_CODES.TIRAMISU) {
+        val permissionToCheck = if (Build.VERSION.SDK_INT >=
+            Build.VERSION_CODES.TIRAMISU) {
             android.Manifest.permission.READ_MEDIA_AUDIO
         } else {
             android.Manifest.permission.READ_EXTERNAL_STORAGE
