@@ -95,7 +95,7 @@ class MainActivity : AppCompatActivity() {
             ActivityCompat.requestPermissions(
                 this,
                 arrayOf(android.Manifest.permission.READ_EXTERNAL_STORAGE),
-                READ_EXTERNAL_STORAGE_IMAGES_PERMISSION_REQUEST_CODE
+                READ_EXTERNAL_STORAGE_PERMISSION_REQUEST_CODE
             )
         }
     }
@@ -136,7 +136,7 @@ class MainActivity : AppCompatActivity() {
                 }
             }
 
-            READ_EXTERNAL_STORAGE_IMAGES_PERMISSION_REQUEST_CODE -> {
+            READ_EXTERNAL_STORAGE_PERMISSION_REQUEST_CODE -> {
                 if (isPermissionGranted) {
                     // Permission is granted. Continue the action or workflow in your app.
                     scanAudio()
@@ -162,6 +162,6 @@ class MainActivity : AppCompatActivity() {
 
 const val READ_MEDIA_AUDIO_PERMISSION_REQUEST_CODE = 2001
 const val READ_MEDIA_IMAGES_PERMISSION_REQUEST_CODE = 2002
-const val READ_EXTERNAL_STORAGE_IMAGES_PERMISSION_REQUEST_CODE = 2003
+const val READ_EXTERNAL_STORAGE_PERMISSION_REQUEST_CODE = 2003
 
 const val UPDATE_AUDIO_FILES = 3001
