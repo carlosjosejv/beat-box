@@ -3,4 +3,7 @@
     <string name="folders_top_bar_title">Audio files on device</string>
     <string name="add_playlist_title">Add to playlist</string>
     <string name="favorite_title">Favorite</string>
+    <string name="playlists">Playlists</string>
+    <string name="files">Files</string>
+    <string name="favorites">Favorites</string>
 </resources>
