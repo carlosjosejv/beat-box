@@ -4,7 +4,7 @@ import androidx.appcompat.app.AppCompatActivity
 import androidx.fragment.app.Fragment
 import androidx.viewpager2.adapter.FragmentStateAdapter
 import com.greenshark.beatbox.fragments.FavoritesFragment
-import com.greenshark.beatbox.fragments.FilesFragment
+import com.greenshark.beatbox.fragments.FoldersFragment
 import com.greenshark.beatbox.fragments.PlaylistsFragment
 
 /**
@@ -26,9 +26,8 @@ class NavigatorAdapter(activity: AppCompatActivity) : FragmentStateAdapter(activ
             }
 
             2 -> {
-                FilesFragment.newInstance()
+                FoldersFragment.newInstance()
             }
-
             else -> {
                 throw IllegalArgumentException("Invalid position")
             }

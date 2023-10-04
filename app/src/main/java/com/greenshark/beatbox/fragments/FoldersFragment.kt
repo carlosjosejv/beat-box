@@ -2,6 +2,7 @@ package com.greenshark.beatbox.fragments
 
 import android.annotation.SuppressLint
 import android.os.Bundle
+import android.util.Log
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
@@ -15,10 +16,10 @@ import com.greenshark.beatbox.R
 import com.greenshark.beatbox.UPDATE_AUDIO_FILES
 import com.greenshark.beatbox.adapters.AudioFileAdapter
 
-class FilesFragment : Fragment() {
+class FoldersFragment : Fragment() {
 
     companion object {
-        fun newInstance() = FilesFragment()
+        fun newInstance() = FoldersFragment()
     }
 
     private val viewModel: NavigatorViewModel by activityViewModels()
@@ -31,7 +32,7 @@ class FilesFragment : Fragment() {
         inflater: LayoutInflater, container: ViewGroup?,
         savedInstanceState: Bundle?
     ): View? {
-        return inflater.inflate(R.layout.fragment_files, container, false)
+        return inflater.inflate(R.layout.fragment_folders, container, false)
     }
 
     @SuppressLint("NotifyDataSetChanged")

@@ -34,15 +34,15 @@ class MainActivity : AppCompatActivity() {
 
         audioScanner = AudioScanner(this.contentResolver)
 
-        tabLayout = findViewById(R.id.nav_tab)
+        tabLayout = findViewById(R.id.tabLayout)
         viewPager = findViewById(R.id.viewPager)
         viewPager.adapter = NavigatorAdapter(this)
 
         TabLayoutMediator(tabLayout, viewPager) { tab, position ->
             when (position) {
-                0 -> tab.text = resources.getString(R.string.playlists)
-                1 -> tab.text = resources.getString(R.string.favorites)
-                2 -> tab.text = resources.getString(R.string.files)
+                0 -> tab.text = "Playlists"
+                1 -> tab.text = "Favorites"
+                2 -> tab.text = "Folders"
             }
         }.attach()
 
