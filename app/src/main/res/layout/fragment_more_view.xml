@@ -83,7 +83,7 @@
         app:layout_constraintTop_toBottomOf="@id/add_playlist">
 
         <ImageView
-            android:id="@+id/like_icon"
+            android:id="@+id/favorite_icon"
             android:layout_width="30dp"
             android:layout_height="30dp"
             android:layout_margin="20dp"
@@ -100,7 +100,7 @@
             android:text="@string/favorite_title"
             android:fontFamily="@font/poppins_regular"
             app:layout_constraintBottom_toBottomOf="parent"
-            app:layout_constraintStart_toEndOf="@id/like_icon"
+            app:layout_constraintStart_toEndOf="@id/favorite_icon"
             app:layout_constraintTop_toTopOf="parent"
             app:layout_constraintVertical_bias="0.5" />
     </androidx.constraintlayout.widget.ConstraintLayout>
