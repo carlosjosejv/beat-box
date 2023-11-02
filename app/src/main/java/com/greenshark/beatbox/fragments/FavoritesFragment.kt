@@ -46,19 +46,11 @@ class FavoritesFragment : Fragment() {
             adapter = audioFileAdapter
         }
 
-        viewModel.setUserFavorites(
-            PreferencesManager().getFavoritesFromSharedPreferences(
-                requireContext()
-            )
-        )
-
         viewModel.favorites.observe(viewLifecycleOwner) { list ->
             audioFileAdapter.apply {
                 audioFiles = list
                 notifyDataSetChanged()
             }
-
-            PreferencesManager().saveFavoritesInSharedPreferences(requireContext(), list)
         }
     }
 

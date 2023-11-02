@@ -49,7 +49,11 @@ class MoreViewFragment(private val audioFile: AudioFile) : BottomSheetDialogFrag
         }
 
         favorite.setOnClickListener {
-            favoriteIcon.setImageResource(if (viewModel.setFavorite(audioFile)) R.drawable.ic_favorite_fill else R.drawable.ic_favorite)
+            favoriteIcon.setImageResource(
+                if (viewModel.setFavorite(audioFile))
+                    R.drawable.ic_favorite_fill
+                else
+                    R.drawable.ic_favorite)
         }
     }
 }

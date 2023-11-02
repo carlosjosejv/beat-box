@@ -32,7 +32,7 @@ class NavigatorViewModel : ViewModel() {
     }
 
     fun setFavorite(audioFile: AudioFile): Boolean {
-        val currentFavorites = mutableFavorites.value ?: mutableSetOf()
+        val currentFavorites = favorites.value ?: mutableSetOf()
         val newFavorites = currentFavorites.toMutableList()
 
         val favorite = isFavorite(audioFile)
@@ -49,7 +49,7 @@ class NavigatorViewModel : ViewModel() {
     }
 
     fun isFavorite(audioFile: AudioFile): Boolean {
-        val currentFavorites = mutableFavorites.value ?: mutableSetOf()
+        val currentFavorites = favorites.value ?: mutableSetOf()
         return currentFavorites.contains(audioFile)
     }
 }

@@ -5,28 +5,28 @@ import android.content.SharedPreferences
 import com.google.gson.Gson
 import com.google.gson.reflect.TypeToken
 import com.greenshark.beatbox.models.AudioFile
+import com.greenshark.beatbox.models.UserPreferences
 
 /**
  * Created by Carlos Jiménez on 16-Sep-23.
  */
-class PreferencesManager {
+class PreferencesManager(context: Context) {
 
-    fun saveFavoritesInSharedPreferences(context: Context, list: List<AudioFile>) {
-        val sharedPreferences: SharedPreferences = context.getSharedPreferences(USER_PREFERENCES, Context.MODE_PRIVATE)
-        val editor = sharedPreferences.edit()
-        val gson = Gson()
-        val json = gson.toJson(list)
-        editor.putString(FAVORITES_KEY, json)
-        editor.apply()
+    private val sharedPreferences = context.getSharedPreferences("user_preferences", Context.MODE_PRIVATE)
+    private val gson = Gson()
+
+    fun saveUserPreferences(userPreferences: UserPreferences) {
+        val json = gson.toJson(userPreferences)
+        sharedPreferences.edit().putString("user_preferences", json).apply()
     }
 
-    fun getFavoritesFromSharedPreferences(context: Context): List<AudioFile> {
-        val sharedPreferences: SharedPreferences = context.getSharedPreferences(USER_PREFERENCES, Context.MODE_PRIVATE)
-        val json = sharedPreferences.getString(FAVORITES_KEY, null)
-        val gson = Gson()
-        val type = object : TypeToken<List<AudioFile>>() {}.type
-
-        return gson.fromJson(json, type) ?: emptyList()
+    fun getUserPreferences(): UserPreferences {
+        val json = sharedPreferences.getString("user_preferences", null)
+        return if (json != null) {
+            gson.fromJson(json, UserPreferences::class.java)
+        } else {
+            UserPreferences()
+        }
     }
 
 }
