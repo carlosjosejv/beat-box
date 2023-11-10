@@ -23,6 +23,8 @@ class MainActivity : AppCompatActivity() {
     private lateinit var viewPager: ViewPager2
     private lateinit var tabLayout: TabLayout
 
+    private var player: ExoPlayer? = null
+
     // Using the viewModels() Kotlin property delegate from the activity-ktx
     // artifact to retrieve the ViewModel in the activity scope.
     /*
@@ -56,18 +58,34 @@ class MainActivity : AppCompatActivity() {
             }
         }
 
-        val player = ExoPlayer.Builder(this).build()
+        player = ExoPlayer.Builder(this).build()
 
         viewModel.mediaItem.observe(this){ uri ->
             // Build the media item.
             val mediaItem = MediaItem.fromUri(uri)
             // Set the media item to be played.
-            player.setMediaItem(mediaItem)
+            player!!.setMediaItem(mediaItem)
             // Prepare the player.
-            player.prepare()
+            player!!.prepare()
             // Start the playback.
-            player.play()
+            player!!.play()
         }
+    }
+
+    override fun onDestroy() {
+        super.onDestroy()
+        player?.apply {
+            stop()
+            release()
+        }
+    }
+
+    override fun onPause() {
+        super.onPause()
+    }
+
+    override fun onResume() {
+        super.onResume()
     }
 
     private fun checkReadMediaAudioPermission() {
