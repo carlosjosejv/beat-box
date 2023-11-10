@@ -11,9 +11,12 @@ import androidx.recyclerview.widget.RecyclerView
 import com.greenshark.beatbox.NavigatorViewModel
 import com.greenshark.beatbox.R
 import com.greenshark.beatbox.adapters.AudioFileAdapter
-import com.greenshark.beatbox.utils.PreferencesManager
+import com.greenshark.beatbox.interfaces.OnAudioItemListener
+import com.greenshark.beatbox.models.AudioFile
+import com.greenshark.beatbox.models.UserPreferences
+import com.greenshark.beatbox.utils.UserPropertiesUtil
 
-class FavoritesFragment : Fragment() {
+class FavoritesFragment : Fragment(), OnAudioItemListener {
 
     companion object {
         fun newInstance() = FavoritesFragment()
@@ -33,7 +36,7 @@ class FavoritesFragment : Fragment() {
 
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
         super.onViewCreated(view, savedInstanceState)
-        audioFileAdapter = AudioFileAdapter()
+        audioFileAdapter = AudioFileAdapter(this)
 
         audioFilesList = view.findViewById(R.id.audio_files_list)
 
@@ -46,12 +49,22 @@ class FavoritesFragment : Fragment() {
             adapter = audioFileAdapter
         }
 
+        //viewModel.setUserFavorites(UserPropertiesUtil.getFavorites(requireContext()).favorites)
+
         viewModel.favorites.observe(viewLifecycleOwner) { list ->
             audioFileAdapter.apply {
                 audioFiles = list
                 notifyDataSetChanged()
+
+                /*val userPreferences = UserPreferences(ArrayList(list), arrayListOf())
+                UserPropertiesUtil.saveFavorites(requireContext(), userPreferences)*/
             }
         }
+    }
+
+    override fun onClick(audioFile: AudioFile) {
+        val mediaUri = audioFile.uri
+        viewModel.setMediaItem(mediaUri)
     }
 
 }

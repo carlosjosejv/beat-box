@@ -1,6 +1,7 @@
 package com.greenshark.beatbox.fragments
 
 import android.annotation.SuppressLint
+import android.net.Uri
 import android.os.Bundle
 import android.util.Log
 import android.view.LayoutInflater
@@ -15,8 +16,10 @@ import com.greenshark.beatbox.NavigatorViewModel
 import com.greenshark.beatbox.R
 import com.greenshark.beatbox.UPDATE_AUDIO_FILES
 import com.greenshark.beatbox.adapters.AudioFileAdapter
+import com.greenshark.beatbox.interfaces.OnAudioItemListener
+import com.greenshark.beatbox.models.AudioFile
 
-class FoldersFragment : Fragment() {
+class FoldersFragment : Fragment(), OnAudioItemListener {
 
     companion object {
         fun newInstance() = FoldersFragment()
@@ -39,7 +42,7 @@ class FoldersFragment : Fragment() {
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
         super.onViewCreated(view, savedInstanceState)
 
-        audioFileAdapter = AudioFileAdapter()
+        audioFileAdapter = AudioFileAdapter(this)
 
         audioFilesList = view.findViewById(R.id.audio_files_list)
         refreshButton = view.findViewById(R.id.refresh_button)
@@ -67,4 +70,8 @@ class FoldersFragment : Fragment() {
         }
     }
 
+    override fun onClick(audioFile: AudioFile) {
+        val mediaUri = audioFile.uri
+        viewModel.setMediaItem(mediaUri)
+    }
 }

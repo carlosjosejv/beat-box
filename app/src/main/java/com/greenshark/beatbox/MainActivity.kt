@@ -8,6 +8,8 @@ import androidx.appcompat.app.AlertDialog
 import androidx.appcompat.app.AppCompatActivity
 import androidx.core.app.ActivityCompat
 import androidx.core.content.ContextCompat
+import androidx.media3.common.MediaItem
+import androidx.media3.exoplayer.ExoPlayer
 import androidx.viewpager2.widget.ViewPager2
 import com.google.android.material.tabs.TabLayout
 import com.google.android.material.tabs.TabLayoutMediator
@@ -52,6 +54,19 @@ class MainActivity : AppCompatActivity() {
                     checkReadMediaAudioPermission()
                 }
             }
+        }
+
+        val player = ExoPlayer.Builder(this).build()
+
+        viewModel.mediaItem.observe(this){ uri ->
+            // Build the media item.
+            val mediaItem = MediaItem.fromUri(uri)
+            // Set the media item to be played.
+            player.setMediaItem(mediaItem)
+            // Prepare the player.
+            player.prepare()
+            // Start the playback.
+            player.play()
         }
     }
 

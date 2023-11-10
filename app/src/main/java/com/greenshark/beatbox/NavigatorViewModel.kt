@@ -1,5 +1,6 @@
 package com.greenshark.beatbox
 
+import android.net.Uri
 import androidx.lifecycle.LiveData
 import androidx.lifecycle.MutableLiveData
 import androidx.lifecycle.ViewModel
@@ -19,6 +20,9 @@ class NavigatorViewModel : ViewModel() {
     private val mutableFavorites = MutableLiveData<List<AudioFile>>()
     val favorites: LiveData<List<AudioFile>> get() = mutableFavorites
 
+    private val mutableMediaItem = MutableLiveData<Uri>()
+    val mediaItem : LiveData<Uri> get() = mutableMediaItem
+
     fun selectItem(item: Int) {
         mutableSelectedItem.value = item
     }
@@ -29,6 +33,10 @@ class NavigatorViewModel : ViewModel() {
 
     fun setUserFavorites(favorites: List<AudioFile>) {
         mutableFavorites.value = favorites
+    }
+
+    fun setMediaItem(uri: Uri){
+        mutableMediaItem.value = uri
     }
 
     fun setFavorite(audioFile: AudioFile): Boolean {
