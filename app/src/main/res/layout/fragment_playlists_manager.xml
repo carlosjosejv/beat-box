@@ -10,7 +10,6 @@
         android:id="@+id/back"
         android:layout_width="40dp"
         android:layout_height="40dp"
-        android:src="@tools:sample/avatars"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toTopOf="parent"
         app:srcCompat="@drawable/ic_arrow_back" />

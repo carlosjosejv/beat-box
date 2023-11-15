@@ -73,7 +73,7 @@ class AudioScanner(private val contentResolver: ContentResolver) {
 
                 // Stores column values and the contentUri in a local object
                 // that represents the media file.
-                audioFileList += AudioFile(contentUri, name, duration, size)
+                audioFileList += AudioFile(contentUri.toString(), name, duration, size)
             }
         }
 

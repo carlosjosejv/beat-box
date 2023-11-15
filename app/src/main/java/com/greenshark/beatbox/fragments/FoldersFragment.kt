@@ -72,6 +72,6 @@ class FoldersFragment : Fragment(), OnAudioItemListener {
 
     override fun onClick(audioFile: AudioFile) {
         val mediaUri = audioFile.uri
-        viewModel.setMediaItem(mediaUri)
+        viewModel.setMediaItem(Uri.parse(mediaUri))
     }
 }

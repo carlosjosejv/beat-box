@@ -1,5 +1,6 @@
 package com.greenshark.beatbox.fragments
 
+import android.net.Uri
 import android.os.Bundle
 import android.view.LayoutInflater
 import android.view.View
@@ -49,22 +50,22 @@ class FavoritesFragment : Fragment(), OnAudioItemListener {
             adapter = audioFileAdapter
         }
 
-        //viewModel.setUserFavorites(UserPropertiesUtil.getFavorites(requireContext()).favorites)
+        viewModel.setUserFavorites(UserPropertiesUtil.getFavorites(requireContext()).favorites)
 
         viewModel.favorites.observe(viewLifecycleOwner) { list ->
             audioFileAdapter.apply {
                 audioFiles = list
                 notifyDataSetChanged()
 
-                /*val userPreferences = UserPreferences(ArrayList(list), arrayListOf())
-                UserPropertiesUtil.saveFavorites(requireContext(), userPreferences)*/
+                val userPreferences = UserPreferences(ArrayList(list), arrayListOf())
+                UserPropertiesUtil.saveFavorites(requireContext(), userPreferences)
             }
         }
     }
 
     override fun onClick(audioFile: AudioFile) {
         val mediaUri = audioFile.uri
-        viewModel.setMediaItem(mediaUri)
+        viewModel.setMediaItem(Uri.parse(mediaUri))
     }
 
 }
