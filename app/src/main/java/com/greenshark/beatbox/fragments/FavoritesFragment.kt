@@ -14,8 +14,8 @@ import com.greenshark.beatbox.R
 import com.greenshark.beatbox.adapters.AudioFileAdapter
 import com.greenshark.beatbox.interfaces.OnAudioItemListener
 import com.greenshark.beatbox.models.AudioFile
-import com.greenshark.beatbox.models.UserPreferences
-import com.greenshark.beatbox.utils.UserPropertiesUtil
+import com.greenshark.beatbox.models.UserFavorites
+import com.greenshark.beatbox.utils.SharedPreferencesManager
 
 class FavoritesFragment : Fragment(), OnAudioItemListener {
 
@@ -50,15 +50,17 @@ class FavoritesFragment : Fragment(), OnAudioItemListener {
             adapter = audioFileAdapter
         }
 
-        viewModel.setUserFavorites(UserPropertiesUtil.getFavorites(requireContext()).favorites)
+        val sharedPreferencesManager = SharedPreferencesManager(requireContext())
+
+        viewModel.setUserFavorites(sharedPreferencesManager.getUserFavorites().favorites)
 
         viewModel.favorites.observe(viewLifecycleOwner) { list ->
             audioFileAdapter.apply {
                 audioFiles = list
                 notifyDataSetChanged()
 
-                val userPreferences = UserPreferences(ArrayList(list), arrayListOf())
-                UserPropertiesUtil.saveFavorites(requireContext(), userPreferences)
+                val userFavorites = UserFavorites(ArrayList(list))
+                sharedPreferencesManager.saveUserFavorites(userFavorites)
             }
         }
     }
