@@ -30,4 +30,11 @@
         <item name="tabSelectedTextColor">@android:color/white</item> <!-- Selected tab text color -->
     </style>
 
+    <style name="BeatBox.DialogFragment" parent="Theme.BeatBox">
+        <item name="android:windowNoTitle">true</item>
+        <item name="android:windowIsFloating">false</item>
+        <item name="android:windowBackground">@android:color/white</item>
+        <item name="android:navigationBarColor">@android:color/white</item>
+    </style>
+
 </resources>

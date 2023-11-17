@@ -40,6 +40,11 @@ class MoreViewFragment(private val audioFile: AudioFile) : BottomSheetDialogFrag
 
         addPlaylist.setOnClickListener {
 
+            val playlistsManagerFragment = PlaylistsManagerFragment()
+            playlistsManagerFragment.show(
+                requireActivity().supportFragmentManager,
+                playlistsManagerFragment.tag
+            )
         }
 
         if (viewModel.isFavorite(audioFile)) {
@@ -53,7 +58,8 @@ class MoreViewFragment(private val audioFile: AudioFile) : BottomSheetDialogFrag
                 if (viewModel.setFavorite(audioFile))
                     R.drawable.ic_favorite_fill
                 else
-                    R.drawable.ic_favorite)
+                    R.drawable.ic_favorite
+            )
         }
     }
 }
